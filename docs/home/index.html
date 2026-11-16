@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+    </meta>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+
+    </meta>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+
+    </script>
+    <style>
+
+                    /*
+                        Edge case: Lists don't use the normal paragraph bottom padding, which misaligns it when any other
+                                   element follows it.
+                       
+                                   So we have this global hacky rule that forces any element following a list (that isn't also a list)
+                                   to have mt-4 applied to it. (--spacing comes from tailwind's CSS).
+                    */
+                    ul + :not(ul):not(ol),
+                    ol + :not(ul):not(ol) {
+                        margin-top: calc(var(--spacing) * 4);
+                    }
+
+                    /*
+                        Edge case: Similarly, for some reason <code> and <a> elements have some misalignment that needs to be fixed globally.
+                    */
+                    code + span,
+                    code + code,
+                    code + a,
+                    a + span,
+                    a + code,
+                    a + a {
+                        padding-left: calc(var(--spacing) * 1);
+                    }
+                
+    </style>
+
+  </head>
+  <body>
+    <div class=" w-full min-h-[100dvh] bg-slate-700 text-stone-200">
+      <section class=" grid grid-cols-3 items-center w-full h-auto p-4 bg-slate-800">
+        <div>
+<span class=" text-xl font-bold">Marmos </span>
+        </div>
+        <div class=" flex justify-center">
+          <nav class=" flex gap-4">
+<a class=" hover:underline" href="/home">Home</a><a class=" hover:underline" href="/api-reference/latest">API Reference</a>
+          </nav>
+
+        </div>
+        <div>
+
+        </div>
+
+      </section>
+      <div class=" w-full min-h-screen">
+        <div class=" w-full min-h-screent">
+          <section class=" w-full h-full">
+            <div class=" p-4">
+              <h1 class=" mb-4 font-bold text-3xl" id="">
+Header 1
+              </h1>
+              <h2 class=" mb-4 font-bold text-2xl" id="">
+Header 2
+              </h2>
+              <h3 class=" mb-4 font-bold text-xl" id="">
+Header 3
+              </h3>
+              <h4 class=" mb-4 font-bold text-lg" id="">
+Header 4
+              </h4>
+              <h1 class=" mb-4 font-bold text-3xl" id="">
+Header  with Inlines and  Links
+              </h1>
+              <p class=" mb-4">
+<span>Paragraph </span>
+              </p>
+              <p class=" mb-4">
+<span>Paragraph </span><span>going </span><span>over </span><span>multiple </span><span>lines </span>
+              </p>
+              <p class=" mb-4">
+<span>Paragraph </span><span class=" italic">with </span><span class=" font-bold">Inlines </span><span>and </span><a class=" underline text-rose-300" href="https://google.com"><span>Links</span></a><span>that sometimes </span><span class=" italic">**Combine** </span>
+              </p>
+              <ul class=" list-disc">
+                <li class=" ml-4 ">
+                  <p class=" ">
+<span>This </span>
+                  </p>
+
+                </li>
+                <li class=" ml-4 ">
+                  <p class=" ">
+<span>Is </span>
+                  </p>
+
+                </li>
+                <li class=" ml-8 list-none">
+                  <ul class=" list-disc">
+                    <li class=" ml-4 ">
+                      <p class=" ">
+<span>an </span>
+                      </p>
+
+                    </li>
+
+                  </ul>
+
+                </li>
+                <li class=" ml-4 ">
+                  <p class=" ">
+<span>unordered </span>
+                  </p>
+
+                </li>
+                <li class=" ml-8 list-none">
+                  <ul class=" list-disc">
+                    <li class=" ml-4 ">
+                      <p class=" ">
+<span>list </span>
+                      </p>
+
+                    </li>
+                    <li class=" ml-8 list-none">
+                      <ul class=" list-disc">
+                        <li class=" ml-4 ">
+                          <p class=" ">
+<span>3 deep! </span>
+                          </p>
+
+                        </li>
+
+                      </ul>
+
+                    </li>
+
+                  </ul>
+
+                </li>
+
+              </ul>
+              <p class=" mb-4">
+<span>But then it resets! </span>
+              </p>
+              <ol class=" list-decimal">
+                <li class=" ml-4 ">
+                  <p class=" ">
+<span>And then </span>
+                  </p>
+
+                </li>
+                <li class=" ml-4 ">
+                  <p class=" ">
+<span>This is </span>
+                  </p>
+
+                </li>
+                <li class=" ml-4 ">
+                  <p class=" ">
+<span>an </span>
+                  </p>
+
+                </li>
+                <li class=" ml-8 list-none">
+                  <ol class=" list-decimal">
+                    <li class=" ml-4 ">
+                      <p class=" ">
+<span>ordered list </span>
+                      </p>
+
+                    </li>
+                    <li class=" ml-8 list-none">
+                      <ol class=" list-decimal">
+                        <li class=" ml-4 ">
+                          <p class=" ">
+<span>3 deep </span>
+                          </p>
+
+                        </li>
+
+                      </ol>
+
+                    </li>
+
+                  </ol>
+
+                </li>
+
+              </ol>
+              <p class=" mb-4">
+<span>That should also reset! </span>
+              </p>
+              <p class=" mb-4">
+<span>Woah look at this </span><code class=" bg-slate-900 pl-2 pr-2">code</code><span>bro. </span>
+              </p>
+<code class=" grid grid-cols-2 bg-black text-white shadow-lg rounded-xl mb-4" style="grid-template-columns: auto 1fr"><div class=" w-auto m-2 border-r-1 border-solid"><div class=" pr-2">1</div><div class=" pr-2">2</div><div class=" pr-2">3</div><div class=" pr-2">4</div><div class=" pr-2">5</div><div class=" pr-2">6</div><div class=" pr-2">7</div><div class=" pr-2">8</div></div><div class=" overflow-x-auto m-2"><pre><span class=" ">This</span>
+<span class=" "></span>
+<span class=" ">code</span>
+<span class=" ">        is</span>
+<span class=" "></span>
+<span class=" ">        untyped</span>
+<span class=" "></span>
+<span class=" ">but craaazy</span></pre></div></code><code class=" grid grid-cols-2 bg-black text-white shadow-lg rounded-xl mb-4" style="grid-template-columns: auto 1fr"><div class=" w-auto m-2 border-r-1 border-solid"><div class=" pr-2">1</div><div class=" pr-2">2</div><div class=" pr-2">3</div><div class=" pr-2">4</div></div><div class=" overflow-x-auto m-2"><pre><span class=" ">And then this one</span>
+<span class=" "></span>
+<span class=" ">should be typed as</span>
+<span class=" ">DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD</span></pre></div></code>
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
