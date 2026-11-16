@@ -13,7 +13,8 @@ find ../juptune/src/juptune/ -name "*.d" | xargs ../marmos/build/marmos convert 
                                                 -V Juptune_LibSodium
 
 rm ./site/1-API\ Reference/juptune.asn1.generated*
+rm -rf docs
 ../marmos/build/marmos docs generate
 
 mv _build docs
-mv to-copy-into-build/* docs/
+cp to-copy-into-build/* docs/
