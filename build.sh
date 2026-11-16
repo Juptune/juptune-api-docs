@@ -15,5 +15,5 @@ find ../juptune/src/juptune/ -name "*.d" | xargs ../marmos/build/marmos convert 
 rm ./site/1-API\ Reference/juptune.asn1.generated*
 ../marmos/build/marmos docs generate
 
-mv _build build
-mv to-copy-into-build/* build/
+mv _build docs
+mv to-copy-into-build/* docs/
